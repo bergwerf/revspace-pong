@@ -13,10 +13,10 @@ import array
 ball = (0, 0)
 panes = (-1, -1)
 
-# Handle player action.
-
-
 def handleCommand(player, cmd):
+    '''
+    Handle player action.
+    '''
     print('Received command #' + str(cmd) + ' for player #' + str(player))
 
 
