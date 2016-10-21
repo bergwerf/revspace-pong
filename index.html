@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var host = '10.42.76.66' // 'localhost'
+      var socket = new WebSocket('ws://' + host + ':8000', 'chat');
+
+      document.body.onkeydown = function(e) {
+        switch(e.which) {
+          case 37: // Left arrow key
+            socket.send('l');
+            break;
+          case 39: // Right arrow key
+            socket.send('r');
+            break;
+          case 38: // Up arrow key
+            socket.send('f');
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
