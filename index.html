@@ -7,19 +7,32 @@
       var host = '10.42.76.66' // 'localhost'
       var socket = new WebSocket('ws://' + host + ':8000', 'chat');
 
+      var down = {};
       document.body.onkeydown = function(e) {
+        down[e.which] = true
+
         switch(e.which) {
-          case 37: // Left arrow key
-            socket.send('l');
-            break;
-          case 39: // Right arrow key
-            socket.send('r');
-            break;
           case 38: // Up arrow key
             socket.send('f');
             break;
+          case 27: // Esc key
+            socket.send('q');
+            break;
         }
       }
+
+      document.body.onkeyup = function(e) {
+        down[e.which] = false
+      }
+
+      window.setInterval(function() {
+        if (down[37]) { // Left arrow key
+          socket.send('l');
+        }
+        if (down[39]) { // Right arrow key
+          socket.send('r');
+        }
+      }, 10);
     </script>
   </body>
 </html>
