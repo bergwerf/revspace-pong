@@ -295,6 +295,9 @@ class ThreadedServer(object):
             # Unlock player.
             panes[player] = -1
 
+            if panes[0] == -1 and panes[1] == -1:
+                turnGameOff()
+
 
 def startSocketServer():
     ThreadedServer('', 8000).listen()
