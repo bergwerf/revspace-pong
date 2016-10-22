@@ -3,9 +3,22 @@
   <head>
   </head>
   <body>
+    <h1>Instructies</h1>
+    <ul>
+      <li>Je bent nu <b id="status">niet</b> met de game geconnect.</li>
+      <li>Er kunnen maximaal twee spelers tegelijk spelen.</li>
+      <li>Met de pijltjestoetsen kun je de balken besturen.</li>
+      <li>Met het pijtje omhoog kun je de bal afschieten.</li>
+      <li>De bal gaat steeds sneller als je hem niet terug kaatst.</li>
+      <li>Je kunt de pagina herladen om de snelheid te resetten.</li>
+      <li>Met Esc kun je de game stoppen.</li>
+    </ul>
     <script type="text/javascript">
       var host = '10.42.76.66' // 'localhost'
       var socket = new WebSocket('ws://' + host + ':8000', 'chat');
+      socket.onopen = function() {
+        document.getElementById('status').innerHTML = 'wel';
+      }
 
       var down = {};
       document.body.onkeydown = function(e) {
